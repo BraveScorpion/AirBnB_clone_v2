@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Module to test storage engine functionality"""
+""" Module for testing file storage"""
 import MySQLdb
 import os
 import unittest
@@ -12,9 +12,9 @@ from models.user import User
 @unittest.skipIf(
     os.getenv('HBNB_TYPE_STORAGE') != 'db', 'DBStorage test')
 class TestDBStorage(unittest.TestCase):
-    """ Class to test DB """
+    """ Class to test the database storage method """
     def test_new(self):
-        """ Creation of new object test"""
+        """ New object is correctly added to database """
         new = User(
             email='john2020@gmail.com',
             password='password',
@@ -43,7 +43,7 @@ class TestDBStorage(unittest.TestCase):
         dbc.close()
 
     def test_delete(self):
-        """ Delete entry test """
+        """ Object is correctly deleted from database """
         new = User(
             email='john2020@gmail.com',
             password='password',
@@ -75,7 +75,7 @@ class TestDBStorage(unittest.TestCase):
         dbc.close()
 
     def test_reload(self):
-        """ Load test """
+        """ Tests the reloading of the database session """
         dbc = MySQLdb.connect(
             host=os.getenv('HBNB_MYSQL_HOST'),
             port=3306,
@@ -105,7 +105,7 @@ class TestDBStorage(unittest.TestCase):
         dbc.close()
 
     def test_save(self):
-        """ addition of entry check """
+        """ object is successfully saved to database """
         new = User(
             email='john2020@gmail.com',
             password='password',
@@ -148,12 +148,12 @@ class TestDBStorage(unittest.TestCase):
         dbc.close()
 
     def test_storage_var_created(self):
-        """ DB creation test """
+        """ DBStorage object storage created """
         from models.engine.db_storage import DBStorage
         self.assertEqual(type(storage), DBStorage)
 
     def test_new_and_save(self):
-        '''Test of creation and store method'''
+        '''testing  the new and save methods'''
         db = MySQLdb.connect(user=os.getenv('HBNB_MYSQL_USER'),
                              host=os.getenv('HBNB_MYSQL_HOST'),
                              passwd=os.getenv('HBNB_MYSQL_PWD'),

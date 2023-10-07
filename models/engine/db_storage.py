@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Storage module"""
+"""This module defines a class to manage database storage for hbnb clone"""
 import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
@@ -15,12 +15,12 @@ from models.review import Review
 
 
 class DBStorage:
-    """SQL storage class"""
+    """This class manages storage of hbnb models in a SQL database"""
     __engine = None
     __session = None
 
     def __init__(self):
-        """Start SQL database storage"""
+        """Initializes the SQL database storage"""
         user = os.getenv('HBNB_MYSQL_USER')
         pword = os.getenv('HBNB_MYSQL_PWD')
         host = os.getenv('HBNB_MYSQL_HOST')
@@ -37,7 +37,7 @@ class DBStorage:
             Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
-        """Object of models stored"""
+        """Returns a dictionary of models currently in storage"""
         objects = dict()
         all_classes = (User, State, City, Amenity, Place, Review)
         if cls is None:
@@ -54,7 +54,7 @@ class DBStorage:
         return objects
 
     def delete(self, obj=None):
-        """Delete a class instance"""
+        """Removes an object from the storage database"""
         if obj is not None:
             self.__session.query(type(obj)).filter(
                 type(obj).id == obj.id).delete(
@@ -62,7 +62,7 @@ class DBStorage:
             )
 
     def new(self, obj):
-        """Creates a new object"""
+        """Adds new object to storage database"""
         if obj is not None:
             try:
                 self.__session.add(obj)
@@ -73,11 +73,11 @@ class DBStorage:
                 raise ex
 
     def save(self):
-        """Adds session toekns to db"""
+        """Commits the session changes to database"""
         self.__session.commit()
 
     def reload(self):
-        """Reads DB"""
+        """Loads storage database"""
         Base.metadata.create_all(self.__engine)
         SessionFactory = sessionmaker(
             bind=self.__engine,
@@ -86,5 +86,5 @@ class DBStorage:
         self.__session = scoped_session(SessionFactory)()
 
     def close(self):
-        """Exit DB"""
+        """Closes the storage engine."""
         self.__session.close()

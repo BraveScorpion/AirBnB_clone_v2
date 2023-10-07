@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Definition of User class"""
+"""This module defines a class User"""
 import os
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
@@ -8,7 +8,7 @@ from models.base_model import BaseModel, Base
 
 
 class User(BaseModel, Base):
-    """User class creation"""
+    """This class defines a user by various attributes"""
     __tablename__ = 'users'
     email = Column(
         String(128), nullable=False

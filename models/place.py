@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Place module"""
+""" Place Module for HBNB project """
 import os
 from sqlalchemy import Column, Float, ForeignKey, Integer, String, Table
 from sqlalchemy.orm import relationship
@@ -27,7 +27,8 @@ place_amenity = Table(
         primary_key=True
     )
 )
-"""Relational db between places and City
+"""Represents the many to many relationship table
+between Place and Amenity records.
 """
 
 
@@ -80,7 +81,7 @@ class Place(BaseModel, Base):
     else:
         @property
         def amenities(self):
-            """Displays amenities of place"""
+            """Returns the amenities of this Place"""
             from models import storage
             amenities_of_place = []
             for value in storage.all(Amenity).values():
@@ -90,14 +91,14 @@ class Place(BaseModel, Base):
 
         @amenities.setter
         def amenities(self, value):
-            """Create an amenity"""
+            """Adds an amenity to this Place"""
             if type(value) is Amenity:
                 if value.id not in self.amenity_ids:
                     self.amenity_ids.append(value.id)
 
         @property
         def reviews(self):
-            """Displays reviews of the place object"""
+            """Returns the reviews of this Place"""
             from models import storage
             reviews_of_place = []
             for value in storage.all(Review).values():

@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" State  test cases module """
+""" """
 import os
 
 from tests.test_models.test_base_model import TestBasemodel
@@ -7,15 +7,15 @@ from models.state import State
 
 
 class TestState(TestBasemodel):
-    """Class of State test"""
+    """Represents the tests for the State model."""
     def __init__(self, *args, **kwargs):
-        """Starts the test for state"""
+        """Initializes the test class."""
         super().__init__(*args, **kwargs)
         self.name = "State"
         self.value = State
 
     def test_name3(self):
-        """name type check"""
+        """Tests the type of name."""
         new = self.value()
         self.assertEqual(
             type(new.name),

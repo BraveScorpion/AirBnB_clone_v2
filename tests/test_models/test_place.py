@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Module test for place """
+""" """
 import os
 
 from tests.test_models.test_base_model import TestBasemodel
@@ -7,15 +7,15 @@ from models.place import Place
 
 
 class TestPlace(TestBasemodel):
-    """Test class for place"""
+    """Represents the tests for the Place model."""
     def __init__(self, *args, **kwargs):
-        """Start test class"""
+        """Initializes the test class."""
         super().__init__(*args, **kwargs)
         self.name = "Place"
         self.value = Place
 
     def test_city_id(self):
-        """id type check"""
+        """Tests the type of city_id."""
         new = self.value()
         self.assertEqual(
             type(new.city_id),
@@ -23,7 +23,7 @@ class TestPlace(TestBasemodel):
         )
 
     def test_user_id(self):
-        """id type check"""
+        """Tests the type of user_id."""
         new = self.value()
         self.assertEqual(
             type(new.user_id),
@@ -31,7 +31,7 @@ class TestPlace(TestBasemodel):
         )
 
     def test_name(self):
-        """name type check"""
+        """Tests the type of name."""
         new = self.value()
         self.assertEqual(
             type(new.name),
@@ -39,7 +39,7 @@ class TestPlace(TestBasemodel):
         )
 
     def test_description(self):
-        """description type check."""
+        """Tests the type of description."""
         new = self.value()
         self.assertEqual(
             type(new.description),
@@ -47,7 +47,7 @@ class TestPlace(TestBasemodel):
         )
 
     def test_number_rooms(self):
-        """room number type check"""
+        """Tests the type of number_rooms."""
         new = self.value()
         self.assertEqual(
             type(new.number_rooms),
@@ -55,7 +55,7 @@ class TestPlace(TestBasemodel):
         )
 
     def test_number_bathrooms(self):
-        """bathroom number check"""
+        """Tests the type of number_bathrooms."""
         new = self.value()
         self.assertEqual(
             type(new.number_bathrooms),
@@ -63,7 +63,7 @@ class TestPlace(TestBasemodel):
         )
 
     def test_max_guest(self):
-        """max_guest check"""
+        """Tests the type of max_guest."""
         new = self.value()
         self.assertEqual(
             type(new.max_guest),
@@ -71,7 +71,7 @@ class TestPlace(TestBasemodel):
         )
 
     def test_price_by_night(self):
-        """Price check typeof"""
+        """Tests the type of price_by_night."""
         new = self.value()
         self.assertEqual(
             type(new.price_by_night),
@@ -79,7 +79,7 @@ class TestPlace(TestBasemodel):
         )
 
     def test_latitude(self):
-        """latitude coordinates check"""
+        """Tests the type of latitude."""
         new = self.value()
         self.assertEqual(
             type(new.latitude),
@@ -87,7 +87,7 @@ class TestPlace(TestBasemodel):
         )
 
     def test_longitude(self):
-        """longitude cordinate check."""
+        """Tests the type of longitude."""
         new = self.value()
         self.assertEqual(
             type(new.longitude),
@@ -95,6 +95,6 @@ class TestPlace(TestBasemodel):
         )
 
     def test_amenity_ids(self):
-        """amenity_id check typeof."""
+        """Tests the type of amenity_ids."""
         new = self.value()
         self.assertEqual(type(new.amenity_ids), list)
