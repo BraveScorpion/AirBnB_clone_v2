@@ -1,1 +1,1 @@
-ALX web framework
+ALX web static deploy
